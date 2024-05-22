@@ -1,0 +1,118 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body style="background-image: url('back.png'); background-repeat:repeat;" >
+            <!-- /////// pop ups //// -->
+        <div class="win" id="win" style="position:absolute; display: flex; flex-direction: column; justify-content: center; align-items: center; ">
+            <video  id="win" autoplay muted loop style="width: 50%; box-shadow: 2px 2px 20px black;">
+            <source src="videowinn.mp4" type="video/mp4"></video>
+            <button id="winbtn" onmouseover="bigbtn(id)" onmouseout="smallbtn(id)" onclick="window.location.reload()" style=" position: absolute ; background-color:bisque;border:2px solid grey; box-shadow: 0px 0px 2px black; font-family: cursive;  margin-top: 19%; border-radius: 10px; " >Play Again</button>
+             </div>
+        </div>
+
+
+        <div class="lose" id="lose" style="position:absolute; display: flex; flex-direction: column; justify-content: center; align-items: center; ">
+            <img src="lose.png" id="lose" style="width: 50%; box-shadow: 2px 2px 20px black">
+            <button  id="losebtn" onclick="window.location.reload()" onmouseover="bigbtn(id)" onmouseout="smallbtn(id)" style=" position: absolute ; background-color:bisque;border:2px solid grey; box-shadow: 0px 0px 2px black; font-family: cursive;  margin-top: 19%; border-radius: 10px;">Try Again</button>
+
+        </div>
+
+           <!-- ///// heading //// -->
+
+        <h1 class="head">GUESS GAME</h1>
+        <div style="display: flex; flex-direction: row; justify-content: center; align-items: center; ">
+
+            <!-- ////////////guessing  areaq /////// -->
+
+            <div style="margin-right: 50%; display: flex; flex-direction: column;">
+                <div style="display: flex; justify-content: center; align-self: center; flex-direction: column;">
+                    <h1 style="font-family: cursive; font-size: 40px; color: brown; text-shadow: 0px 1px 0px black;  text-align: center;">Guess the Number in 3 Attempts</h1>
+                    <h1  id="attempts" style="font-family: cursive; font-size: 40px; color: rgb(255, 0, 0); text-shadow: 0px 1px 0px black; ; text-align: center;">Attempts left : 3</h1>
+                </div>
+                <div style="display: flex; flex-direction: column; justify-content: center; align-self: center;">
+                    <div style="display: flex; flex-direction: row;" class="nc"> 
+                        <h1  class="choosedNumber" id="one" onclick="cardr(id) ">1</h1>
+                        <h1 class="choosedNumber" id="two" onclick="cardr(id)">2</h1>
+                        <h1 class="choosedNumber" id="three" onclick="cardr(id)">3</h1>
+                        <h1 class="choosedNumber" id="four" onclick="cardr(id)">4</h1>
+                        <h1 class="choosedNumber" id="five" onclick="cardr(id)">5</h1>
+                    </div>
+                    <div style="display: flex; flex-direction: row;" class="nc">
+                        <h1 class="choosedNumber" id="six" onclick="cardr(id)">6</h1>
+                        <h1 class="choosedNumber" id="seven" onclick="cardr(id)">7</h1>
+                        <h1 class="choosedNumber" id="eight" onclick="cardr(id)">8</h1>
+                        <h1 class="choosedNumber" id="nine" onclick="cardr(id)">9</h1>
+                        <h1 class="choosedNumber" id="ten" onclick="cardr(id)">10</h1>
+                    </div>
+                </div>
+            </div>
+
+            <!-- //////////// card area ///////////// -->
+
+            <div style="margin-left: 50%; display:flex; justify-content: center; align-self: center; position:absolute;" class="cardb" id="cardb">
+                <img src="cardb.png" class="cardimg" id="cardimage" >
+            </div>
+        </div>
+
+     
+
+
+                <!-- /////// script ///////// -->
+
+        <script>
+            var attemptsLeft=3;
+            function cardr(id)
+            {
+                var randomNumber=Math.floor(Math.random() * 10) + 1;
+                var cn;  /// card number
+                cn=parseInt(document.getElementById(id).innerHTML);
+                --attemptsLeft; 
+                document.getElementById("attempts").innerHTML="Attempts left : " +attemptsLeft;                
+                document.getElementById("cardb").style.animationPlayState="paused,running";
+
+                    //// logic for changing card according to the random number choosen
+
+                    if(randomNumber==1 ){ setTimeout(() => { document.getElementById("cardimage").setAttribute("src","one.png"); }, 1000);}
+                    else if (randomNumber==2){ setTimeout(() => {document.getElementById("cardimage").setAttribute("src","two.png"); }, 1000);}
+                    else if (randomNumber==3){ setTimeout(() => {document.getElementById("cardimage").setAttribute("src","three.png"); }, 1000);}
+                    else if (randomNumber==4){ setTimeout(() => {document.getElementById("cardimage").setAttribute("src","four.png"); }, 1000);}
+                    else if (randomNumber==5){ setTimeout(() => {document.getElementById("cardimage").setAttribute("src","five.png");}, 1000);}
+                    else if (randomNumber==6){ setTimeout(() => {document.getElementById("cardimage").setAttribute("src","six.png"); }, 1000);}
+                    else if (randomNumber==7){ setTimeout(() => {document.getElementById("cardimage").setAttribute("src","seven.png"); }, 1000);}
+                    else if (randomNumber==8){ setTimeout(() => {document.getElementById("cardimage").setAttribute("src","eight.png"); }, 1000);}
+                    else if (randomNumber==9){ setTimeout(() => {document.getElementById("cardimage").setAttribute("src","nine.png"); }, 1000);}
+                    else if (randomNumber==10) {setTimeout(() =>{document.getElementById("cardimage").setAttribute("src","ten.png"); }, 1000);}
+                    setTimeout(() => {document.getElementById("cardb").style.animationPlayState="paused,paused"; },1000); 
+                    setTimeout(() => {document.getElementById("cardb").style.animationPlayState="running,paused"; },2000); 
+
+
+                        /// logic for result 
+                    if (cn==randomNumber){ 
+                        document.getElementById("attempts").innerHTML="Attempts left : " +attemptsLeft;
+                        setTimeout(() => {document.getElementById("cardimage").setAttribute("src","cardb.png"); },10000);
+                        setTimeout(() => { document.getElementById("win").style.animationPlayState = "running"; }, 2000); }
+                    else{
+                        document.getElementById("attempts").innerHTML="Attempts left : " +attemptsLeft;
+                        if(attemptsLeft>0 && attemptsLeft<3){
+                        setTimeout(() => {document.getElementById("cardimage").setAttribute("src","cardb.png"); },2000);}
+
+                        else if (attemptsLeft==0){
+                        setTimeout(() => {document.getElementById("cardimage").setAttribute("src","cardb.png"); },5000);
+                        setTimeout(() => { document.getElementById("lose").style.animationPlayState="running";} , 2000);}
+                        else{ alert("invalid");}     
+                        }
+                     
+            } 
+
+            /// logic for pop ups buttons
+            function bigbtn(id){
+                var btnid=id;
+                document.getElementById(id).style.backgroundColor= "red";
+                document.getElementById(id).color="white"; }      
+            function smallbtn(id){
+                document.getElementById(id).style.backgroundColor= "wheat";}
+    
+        </script>
+    </body>
+</html>

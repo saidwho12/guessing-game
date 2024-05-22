@@ -1,0 +1,168 @@
+.head{
+    color:rgb(242, 118, 118);
+    text-shadow:2px 2px 2px brown;
+   font-size: 100px;
+   background-color: blanchedalmond;
+   /* background-blend-mode:luminosity; */
+   text-align: center;
+}
+/* /////////// number conatiner///////// */
+.nc h1{
+    margin: 30px;
+    color: rgb(255, 255, 255);
+    font-size: 100px;
+    font-family: cursive;
+    /* text-shadow: 2px 2px 1px black; */
+    animation-name:glow;
+    animation-duration: 1s;
+    animation-timing-function:ease-in-out ;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    transition: color .5s;
+}
+.nc h1:hover{
+    /* font-size: 120px; */
+    color: brown;
+    /* transform:color:black 2s; */
+}
+.cardb{
+    transition: all;
+    animation-name: card , rotate;
+    animation-duration: 1s ,1s;
+    animation-timing-function: ease-in-out, ease-out;
+    animation-iteration-count: infinite , infinite;
+    animation-direction:alternate-reverse , normal;
+    transition: all;
+    animation-play-state:running,paused;
+    /* background-image:url('cardb.png'); */
+}
+.win {
+    content-visibility:hidden;
+     animation-name: win;
+     animation-duration: 0.5s;
+     animation-timing-function: ease-in;
+     animation-fill-mode: forwards;
+     animation-iteration-count: 1;
+    transition: all;
+    animation-play-state: paused;
+}
+.lose {
+    content-visibility:hidden;
+     animation-name: lose;
+     animation-duration: 0.3s;
+     animation-timing-function: ease-in;
+     animation-fill-mode: forwards;
+     animation-iteration-count: 1;
+    transition: all;
+    animation-play-state: paused;
+}
+.win button {
+    animation-name: btnw;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1; 
+}
+.lose button {
+    animation-name: btnl;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;  
+}
+   
+@keyframes  btnw {
+    from{
+    width:30px;
+    font-size: 5px;
+    font-weight: 100;
+    padding: 0px;
+    }
+    to{
+        color: brown;
+        font-size: 20px;
+        text-shadow: 1px 1px 1px rgb(0, 0, 0);
+         font-weight: 300;
+         padding: 10px;
+         width:150px;
+    }
+}
+
+@keyframes  btnl {
+    from{
+    width:30px;
+    font-size: 5px;
+    font-weight: 100;
+    padding: 0px;
+    }
+    to{
+        color: brown;
+        font-size: 20px;
+        text-shadow: 1px 1px 1px rgb(0, 0, 0);
+         font-weight: 300;
+         padding: 10px;
+         width:150px;
+
+    }
+}
+
+@keyframes win {
+    from {
+        content-visibility: hidden;
+        width:10%;
+        margin-top: 0%;
+        margin-left: 40%;
+    }
+    to{
+        content-visibility: visible;
+        width:50%;
+        margin-left: 25%;
+        margin-top: 15%; 
+    }
+}
+
+@keyframes lose {
+    from {
+        content-visibility: hidden;
+
+        width:10%;
+        margin-top: 0%;
+        margin-left: 40%;
+    }
+    to{
+        content-visibility: visible;
+        width:50%;
+        margin-left: 25%;
+        margin-top: 15%; 
+    }
+}
+
+@keyframes rotate{
+   from{
+    transform: rotateY(0deg);
+   }
+    to{
+        transform: rotateY(360deg);
+    }
+}
+
+@keyframes card{
+    from{
+       margin-top: 30px;
+    }
+    to{
+      margin-top: -30px;
+    }
+}
+
+@keyframes glow{
+    from{
+        text-shadow: 0 0 10px rgb(255, 248, 248) , 0 0 20px rgb(255, 255, 255), 0 0 30px rgb(255, 255, 255), 0 0 40px rgb(255, 53, 53), 0 0 50px rgb(255, 77, 77) , 0 0 60px rgb(239, 0, 0); }
+    to{
+            text-shadow: 0 0 20px rgb(255, 255, 255) , 0 0 30px rgb(255, 117, 117), 0 0 40px rgb(255, 93, 93), 0 0 50px rgb(245, 85, 85),
+            0 0 60px rgb(255, 94, 94) , 0 0 60px  rgb(255, 94, 94);
+    }
+}
+
+
+
